@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — evoAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:  #07091a; --navy2: #0d1130; --navy3: #111940;
+  --green: #00C853; --blue:  #0044d4;
+  --white: #f5f6fa; --muted: #8890aa;
+  --border: rgba(255,255,255,0.07);
+  --font: 'DM Sans', sans-serif; --mono: 'DM Mono', monospace;
+  --nav-h: 68px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--navy); color: var(--white); line-height: 1.7; }
+a { text-decoration: none; color: inherit; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; background: rgba(7,9,26,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.5px; }
+.nav-logo .evo { color: var(--green); font-weight: 300; }
+.nav-logo .ai  { color: var(--blue); font-weight: 700; }
+.nav-back { font-size: 0.85rem; color: var(--muted); display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+.nav-back:hover { color: var(--white); }
+
+.page-wrap { max-width: 780px; margin: 0 auto; padding: calc(var(--nav-h) + 4rem) 6% 6rem; }
+
+.page-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(0,200,83,0.1); border: 1px solid rgba(0,200,83,0.25);
+  color: var(--green); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 1.5rem;
+  font-family: var(--mono);
+}
+.page-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; letter-spacing: -1px; line-height: 1.15; margin-bottom: 0.75rem; }
+.page-meta  { font-size: 0.84rem; color: var(--muted); margin-bottom: 3rem; }
+.divider    { width: 48px; height: 3px; background: linear-gradient(90deg, var(--green), var(--blue)); border-radius: 2px; margin: 0.75rem 0 3rem; }
+
+.doc-section { margin-bottom: 2.75rem; }
+.doc-section h2 { font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+.doc-section h2::before { content: ''; display: inline-block; width: 4px; height: 1.15em; background: var(--green); border-radius: 2px; flex-shrink: 0; }
+.doc-section p  { font-size: 0.95rem; color: var(--muted); margin-bottom: 0.85rem; line-height: 1.75; }
+.doc-section p:last-child { margin-bottom: 0; }
+.doc-section ul { list-style: none; margin: 0.5rem 0 0.85rem; }
+.doc-section ul li { font-size: 0.95rem; color: var(--muted); padding: 0.3rem 0 0.3rem 1.4rem; position: relative; line-height: 1.65; }
+.doc-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 0.8rem; top: 0.38rem; font-family: var(--mono); }
+.doc-section a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+.info-box { background: var(--navy2); border: 1px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin: 1rem 0; }
+.info-box p { font-size: 0.88rem; color: var(--muted); margin: 0; }
+.info-box strong { color: var(--white); }
+
+footer { background: var(--navy2); border-top: 1px solid var(--border); padding: 2rem 6%; }
+.footer-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-size: 1.2rem; font-weight: 600; }
+.footer-logo .evo { color: var(--green); font-weight: 300; }
+.footer-logo .ai  { color: var(--blue); font-weight: 700; }
+.footer-links { display: flex; gap: 1.75rem; list-style: none; }
+.footer-links a, .footer-legal a { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
+.footer-links a:hover, .footer-legal a:hover { color: var(--white); }
+.footer-legal { display: flex; gap: 1.5rem; list-style: none; }
+.footer-legal a { text-decoration: underline; text-underline-offset: 3px; }
+.footer-copy { font-size: 0.78rem; color: var(--muted); }
+@media(max-width:640px) {
+  .footer-top, .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-links, .footer-legal { justify-content: center; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="evoAI" style="height:38px;width:auto;"></a>
+  <a href="index.html" class="nav-back">&#8592; Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-badge">Legal</div>
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-meta">Last updated: March 2026 &nbsp;·&nbsp; evoAI</p>
+  <div class="divider"></div>
+
+  <div class="info-box">
+    <p><strong>Summary:</strong> We collect only what we need, we never sell your data, and you can ask us to delete it at any time. Contact us at info@evoaiglobal.ai</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>1. Who we are</h2>
+    <p>evoAI ("we", "us", "our") is an AI consultancy and technology company. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website or contact us.</p>
+    <p>If you have any questions about this policy, please contact us at info@evoaiglobal.ai</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. What information we collect</h2>
+    <p>We collect information you provide directly to us, including:</p>
+    <ul>
+      <li>Your name and email address when you fill in our contact form</li>
+      <li>Your company name and the service you're interested in</li>
+      <li>The message content you submit to us</li>
+      <li>Any other information you choose to share when communicating with us</li>
+    </ul>
+    <p>We do not currently use cookies for tracking, run advertising campaigns, or use third-party analytics tools beyond what is needed to operate our contact form.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. How we use your information</h2>
+    <p>We use the information you provide solely to:</p>
+    <ul>
+      <li>Respond to your enquiry or message</li>
+      <li>Discuss potential services or collaborations with you</li>
+      <li>Send follow-up communications related to your enquiry</li>
+      <li>Comply with legal obligations</li>
+    </ul>
+    <p>We will never use your information for unsolicited marketing, nor share it with third parties for their own marketing purposes.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. How we store your information</h2>
+    <p>Contact form submissions are delivered to our email via Web3Forms, a secure form processing service. We store your information only as long as necessary to respond to your enquiry and for legitimate business purposes.</p>
+    <p>We take appropriate technical and organisational measures to protect your personal data against unauthorised access, alteration, or destruction.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Sharing your information</h2>
+    <p>We do not sell, trade, or rent your personal information to any third parties. We may share your information only in the following limited circumstances:</p>
+    <ul>
+      <li>With service providers who help us operate our website (e.g. Web3Forms for form processing)</li>
+      <li>When required by law, regulation, or legal process</li>
+      <li>To protect the rights, property, or safety of evoAI or others</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Your rights (GDPR &amp; UK Data Protection)</h2>
+    <p>If you are based in the UK or EU, you have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong style="color:var(--white)">Access</strong> — request a copy of the data we hold about you</li>
+      <li><strong style="color:var(--white)">Rectification</strong> — ask us to correct inaccurate information</li>
+      <li><strong style="color:var(--white)">Erasure</strong> — request that we delete your personal data</li>
+      <li><strong style="color:var(--white)">Restriction</strong> — ask us to limit how we use your data</li>
+      <li><strong style="color:var(--white)">Portability</strong> — receive your data in a portable format</li>
+      <li><strong style="color:var(--white)">Objection</strong> — object to our processing of your data</li>
+    </ul>
+    <p>To exercise any of these rights, email us at info@evoaiglobal.ai. We will respond within 30 days.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Third-party links</h2>
+    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies separately.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Children's privacy</h2>
+    <p>Our services are not directed at individuals under the age of 16. We do not knowingly collect personal data from children. If you believe we have inadvertently collected such data, please contact us immediately.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>10. Contact us</h2>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+    <div class="info-box">
+      <p><strong>evoAI</strong><br>Email: info@evoaiglobal.ai<br>Website: <a href="index.html">www.evoaiglobal.ai</a></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo"><img src="images/logo.png" alt="evoAI" style="height:30px;width:auto;"></div>
+    <ul class="footer-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <p style="font-size:0.78rem;color:var(--muted);">Evolve. Automate. Accelerate.</p>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 evoAI. All rights reserved.</p>
+    <p class="footer-copy">Powered by <a href="https://evoaiglobal.ai/#services" style="color:var(--green);text-decoration:underline;text-underline-offset:3px;">evoAI</a></p>
+    <ul class="footer-legal">
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms &amp; Conditions</a></li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
