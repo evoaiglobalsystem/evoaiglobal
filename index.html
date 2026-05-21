@@ -1040,6 +1040,8 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
                 <option>AI Strategy &amp; Consulting</option>
                 <option>Intelligent Automation</option>
                 <option>evoAiDesk Product Demo</option>
+                <option>RAG &amp; Knowledge Retrieval</option>
+                <option>Predictive Analytics</option>
                 <option>Custom AI Build</option>
               </select>
             </div>
@@ -1347,6 +1349,8 @@ function handleDemoSubmit(e){
   .then(res => res.json())
   .then(result => {
 
+    console.log('web3forms response:', JSON.stringify(result));
+
     if(result.success){
 
       /* Send demo lead to Google Sheet */
@@ -1379,6 +1383,7 @@ function handleDemoSubmit(e){
     } else {
 
       document.getElementById('demoSuccessMsg').style.display = 'none';
+      document.getElementById('demoErrorMsg').textContent = 'Error: ' + (result.message || JSON.stringify(result));
       document.getElementById('demoErrorMsg').style.display = 'block';
 
     }
@@ -1391,6 +1396,7 @@ function handleDemoSubmit(e){
 
     console.log("Demo form error:", err);
     document.getElementById('demoSuccessMsg').style.display = 'none';
+    document.getElementById('demoErrorMsg').textContent = 'Network error: ' + err.message;
     document.getElementById('demoErrorMsg').style.display = 'block';
 
     btn.innerHTML = '<span>Book My Demo</span><span>&#8594;</span>';
