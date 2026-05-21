@@ -409,6 +409,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   .step-num{flex-shrink:0;margin-bottom:0;margin-top:2px}
   .step-icon{display:none}
   .demo-grid{grid-template-columns:1fr;gap:2.5rem}
+  .engagement-grid{grid-template-columns:1fr}
 }
 @media(max-width:860px){
   .nav-links{display:none;flex-direction:column}
@@ -420,17 +421,25 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   .nav-cta{display:block;text-align:center;margin-right:0!important}
 }
 @media(max-width:640px){
+  section{padding:4rem 5%}
   .services-grid{grid-template-columns:1fr}
   .cases-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .about-stats{grid-template-columns:1fr 1fr}
   .footer-top,.footer-bottom{flex-direction:column;text-align:center}
-  .footer-links,.footer-legal{justify-content:center;flex-wrap:wrap}
+  .footer-links{gap:1rem;flex-wrap:wrap;justify-content:center}
+  .footer-legal{justify-content:center;flex-wrap:wrap}
   .footer-social{justify-content:center}
   .hero-actions{flex-direction:column;align-items:center;gap:0.75rem}
-  .btn-primary,.btn-secondary,.btn-demo{width:100%;max-width:280px;text-align:center}
+  .btn-primary,.btn-secondary,.btn-demo{width:100%;max-width:300px;text-align:center}
   .demo-form-card{padding:1.5rem 1.1rem}
   .demo-form-card::before{left:1rem;right:1rem}
+  .form-submit{width:100%;justify-content:center}
+  .sec-header{margin-bottom:2.5rem}
+  .contact-grid{gap:1.5rem}
+  .tech-grid{grid-template-columns:1fr}
+  .security-grid{grid-template-columns:1fr}
+  .engagement-card{padding:1.5rem}
 }
 @media(max-width:900px){
   .cases-grid{grid-template-columns:1fr 1fr}
@@ -1031,7 +1040,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
                 <option>AI Strategy &amp; Consulting</option>
                 <option>Intelligent Automation</option>
                 <option>evoAiDesk Product Demo</option>
-                <option>RAG &amp; Knowledge Retrieval</option>
                 <option>Predictive Analytics</option>
                 <option>Custom AI Build</option>
               </select>
@@ -1040,7 +1048,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
               <label for="demo-message">Anything specific you'd like us to cover?</label>
               <textarea id="demo-message" rows="3" placeholder="e.g. We want to automate our invoice processing and integrate with our ERP..."></textarea>
             </div>
-            <input type="text" name="demo-website" id="demo-website" autocomplete="off" style="display:none;">
+            <input type="text" name="dw_trap" id="demo-website" autocomplete="nope" tabindex="-1" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
             <button type="submit" class="form-submit" id="demoSubmitBtn"><span>Book My Demo</span><span>&#8594;</span></button>
             <p class="form-note">We reply within 24 hours. No spam, ever.</p>
             <div class="form-msg success" id="demoSuccessMsg">&#10003; &nbsp;Demo request sent! We'll confirm your session within 24 hours.</div>
@@ -1290,10 +1298,11 @@ function handleDemoSubmit(e){
 
   e.preventDefault();
 
-  // Honeypot check
+  // Honeypot check — if filled, likely autofill bot; show error not silent fail
   var honeypot = document.getElementById("demo-website").value;
   if (honeypot !== "") {
     console.log("Spam blocked");
+    document.getElementById('demoErrorMsg').style.display = 'block';
     return;
   }
 
