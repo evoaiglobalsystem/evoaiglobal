@@ -177,27 +177,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:
 .btn-primary:hover{background:#00e060;transform:translateY(-2px);box-shadow:0 0 36px rgba(0,200,83,0.35)}
 .btn-secondary{background:transparent;color:var(--white);font-weight:500;font-size:0.95rem;padding:0.85rem 2rem;border-radius:8px;display:inline-block;border:1px solid rgba(255,255,255,0.15);transition:border-color 0.2s,transform 0.15s}
 .btn-secondary:hover{border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
-.btn-demo{background:transparent;color:var(--blue);font-weight:600;font-size:0.95rem;padding:0.85rem 2rem;border-radius:8px;display:inline-block;border:1.5px solid rgba(0,68,212,0.5);transition:border-color 0.2s,background 0.2s,transform 0.15s,box-shadow 0.2s;box-shadow:0 0 18px rgba(0,68,212,0.12)}
-.btn-demo:hover{border-color:rgba(0,68,212,0.9);background:rgba(0,68,212,0.1);transform:translateY(-2px);box-shadow:0 0 28px rgba(0,68,212,0.25)}
-
-/* DEMO REQUEST */
-#demo{background:var(--navy3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-#demo::before{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(0,68,212,0.1) 0%,transparent 65%);pointer-events:none}
-#demo::after{content:'';position:absolute;bottom:-80px;left:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(0,200,83,0.06) 0%,transparent 65%);pointer-events:none}
-.demo-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:4.5rem;align-items:start;margin-top:2rem}
-.demo-perks{display:flex;flex-direction:column;gap:1.1rem;margin-top:1.5rem}
-.demo-perk{display:flex;align-items:flex-start;gap:0.85rem}
-.demo-perk-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0;margin-top:2px;background:rgba(0,68,212,0.12);border:1px solid rgba(0,68,212,0.25)}
-.demo-perk-text h4{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.15rem}
-.demo-perk-text p{font-size:0.82rem;color:var(--muted);line-height:1.55}
-.demo-form-card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:2.25rem;position:relative}
-.demo-form-card::before{content:'';position:absolute;top:-1px;left:2rem;right:2rem;height:2px;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:0 0 2px 2px}
-.demo-form{display:flex;flex-direction:column;gap:0.85rem}
-.demo-badge{display:inline-flex;align-items:center;gap:0.45rem;background:rgba(0,68,212,0.12);border:1px solid rgba(0,68,212,0.3);color:#6ea6ff;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.85rem;border-radius:999px;margin-bottom:1rem;font-family:var(--mono)}
-.demo-badge-dot{width:5px;height:5px;background:#6ea6ff;border-radius:50%;animation:pulse 2s infinite}
-.demo-form-title{font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:0.3rem}
-.demo-form-sub{font-size:0.84rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.6}
-@media(max-width:900px){.demo-grid{grid-template-columns:1fr;gap:2.5rem}}
 
 /* SHARED SECTION LAYOUT — every section uses this same structure */
 section{padding:6rem 6%}
@@ -426,20 +405,9 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   .footer-top,.footer-bottom{flex-direction:column;text-align:center}
   .footer-links,.footer-legal{justify-content:center;flex-wrap:wrap}
   .footer-social{justify-content:center}
-  /* Hero buttons stack vertically on small screens */
-  .hero-actions{flex-direction:column;align-items:center;gap:0.75rem}
-  .btn-primary,.btn-secondary,.btn-demo{width:100%;max-width:280px;text-align:center}
-  /* Demo form card padding reduced on mobile */
-  .demo-form-card{padding:1.5rem 1.1rem}
-  .demo-form-card::before{left:1rem;right:1rem}
 }
 @media(max-width:900px){
   .cases-grid{grid-template-columns:1fr 1fr}
-  .demo-grid{grid-template-columns:1fr;gap:2.5rem}
-}
-@media(max-width:860px){
-  /* Stack the two nav CTAs and reduce size so they fit in mobile menu */
-  .nav-cta{display:block;text-align:center;margin-right:0!important}
 }
 </style>
 </head>
@@ -487,7 +455,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <li><a href="faq.html"><span class="dropdown-dot dot-purple"></span>FAQ</a></li>
       </ul>
     </li>
-    <li><a href="#demo" class="nav-cta" style="background:var(--blue)!important;color:var(--white)!important;margin-right:0.4rem;padding:0.45rem 0.85rem!important;">Book a Demo</a></li>
     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
@@ -502,7 +469,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   <p class="hero-desc">We help ambitious enterprises integrate, scale, and future-proof their technology with the power of artificial intelligence.</p>
   <div class="hero-actions">
     <a href="#services" class="btn-primary">Our Services</a>
-    <a href="#demo" class="btn-demo">Request a Demo</a>
     <a href="#contact" class="btn-secondary">Get in Touch</a>
   </div>
 </section>
@@ -667,109 +633,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
           <div class="step-icon">&#128640;</div>
           <h3>Deploy &amp; Scale</h3>
           <p>We launch, monitor, and refine. Once it's working we help you scale across your organisation and stay on hand as your AI ambitions grow.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMO REQUEST -->
-<section id="demo">
-  <div class="inner">
-    <div class="demo-grid">
-      <div>
-        <div class="section-label reveal">// See it live</div>
-        <h2 class="section-title reveal d1">Request a demo</h2>
-        <div class="divider reveal d2"></div>
-        <p class="section-sub reveal d2">Book a 30-minute live walkthrough with our team. We'll show you exactly how evoAI can be applied to your business — no slides, no fluff, just real answers.</p>
-        <div class="demo-perks reveal d2">
-          <div class="demo-perk">
-            <div class="demo-perk-icon">&#128337;</div>
-            <div class="demo-perk-text">
-              <h4>30 minutes, focused</h4>
-              <p>A live session tailored to your industry and use case — not a generic product tour.</p>
-            </div>
-          </div>
-          <div class="demo-perk">
-            <div class="demo-perk-icon">&#128200;</div>
-            <div class="demo-perk-text">
-              <h4>Real ROI scenarios</h4>
-              <p>We'll walk through concrete examples relevant to your team, with real numbers.</p>
-            </div>
-          </div>
-          <div class="demo-perk">
-            <div class="demo-perk-icon">&#128172;</div>
-            <div class="demo-perk-text">
-              <h4>Ask us anything</h4>
-              <p>Bring your toughest questions about AI integration, timelines, cost, and data security.</p>
-            </div>
-          </div>
-          <div class="demo-perk">
-            <div class="demo-perk-icon">&#128274;</div>
-            <div class="demo-perk-text">
-              <h4>NDA-first, always</h4>
-              <p>Everything discussed is confidential. We sign before any conversation begins.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal d2">
-        <div class="demo-form-card">
-          <div class="demo-badge"><div class="demo-badge-dot"></div>Book a session</div>
-          <div class="demo-form-title">See evoAI in action</div>
-          <div class="demo-form-sub">Fill in the form and we'll confirm a time within 24 hours.</div>
-          <form class="demo-form" id="demoForm" onsubmit="handleDemoSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="demo-fname">First name</label>
-                <input type="text" id="demo-fname" placeholder="John" required>
-              </div>
-              <div class="form-group">
-                <label for="demo-lname">Last name</label>
-                <input type="text" id="demo-lname" placeholder="Smith" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="demo-email">Work email</label>
-              <input type="email" id="demo-email" placeholder="john@company.com" required>
-            </div>
-            <div class="form-group">
-              <label for="demo-company">Company</label>
-              <input type="text" id="demo-company" placeholder="Your company name" required>
-            </div>
-            <div class="form-group">
-              <label for="demo-product">What would you like to see?</label>
-              <select id="demo-product" name="demo-product" required>
-                <option value="">Select a focus area...</option>
-                <option>AI Strategy &amp; Consulting</option>
-                <option>Intelligent Automation</option>
-                <option>evoAiDesk Product Demo</option>
-                <option>RAG &amp; Knowledge Retrieval</option>
-                <option>Predictive Analytics</option>
-                <option>Custom AI Build</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="demo-size">Company size</label>
-              <select id="demo-size" name="demo-size">
-                <option value="">Select team size...</option>
-                <option>1–10 employees</option>
-                <option>11–50 employees</option>
-                <option>51–200 employees</option>
-                <option>201–1,000 employees</option>
-                <option>1,000+ employees</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="demo-message">Anything specific you'd like us to cover?</label>
-              <textarea id="demo-message" rows="3" placeholder="e.g. We want to automate our invoice processing and integrate with our ERP..."></textarea>
-            </div>
-            <input type="text" name="demo-website" id="demo-website" autocomplete="off" style="display:none;">
-            <button type="submit" class="form-submit" id="demoSubmitBtn"><span>Book My Demo</span><span>&#8594;</span></button>
-            <p class="form-note">We reply within 24 hours. No spam, ever.</p>
-            <div class="form-msg success" id="demoSuccessMsg">&#10003; &nbsp;Demo request sent! We'll confirm your session within 24 hours.</div>
-            <div class="form-msg error" id="demoErrorMsg">Something went wrong. Please email info@evoaiglobal.ai directly.</div>
-          </form>
         </div>
       </div>
     </div>
@@ -1080,7 +943,6 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <li><a href="#tech">Capabilities</a></li>
       <li><a href="#security">Security</a></li>
       <li><a href="#cases">Case Studies</a></li>
-      <li><a href="#demo">Book a Demo</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1220,7 +1082,7 @@ function handleSubmit(e) {
   var fname = document.getElementById('fname').value.trim();
   var lname = document.getElementById('lname').value.trim();
 
-  fetch('https://evoaideskpostlead.evoaiglobal-system.workers.dev/', {
+  fetch('https://n8n-desk.evoaiglobal-system.workers.dev/', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -1258,65 +1120,6 @@ function handleSubmit(e) {
   btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
   btn.disabled  = false;
 });
-}
-</script>
-<script>
-function handleDemoSubmit(e) {
-  e.preventDefault();
-
-  if (document.getElementById('demo-website').value !== '') {
-    console.log('Spam blocked');
-    return;
-  }
-
-  var btn    = document.getElementById('demoSubmitBtn');
-  var succEl = document.getElementById('demoSuccessMsg');
-  var errEl  = document.getElementById('demoErrorMsg');
-
-  btn.innerHTML = '<span>Sending…</span>';
-  btn.disabled  = true;
-  succEl.style.display = 'none';
-  errEl.style.display  = 'none';
-
-  var fname = document.getElementById('demo-fname').value.trim();
-  var lname = document.getElementById('demo-lname').value.trim();
-
-  fetch('https://n8n-desk.evoaiglobal-system.workers.dev/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept':        'application/json',
-      'x-tenant-id':   'evoai',
-      'x-api-key':     'key-evoai',
-    },
-    body: JSON.stringify([{
-      tenant_id:    'evoai',
-      name:         fname + ' ' + lname,
-      email:        document.getElementById('demo-email').value.trim(),
-      company:      document.getElementById('demo-company').value.trim() || 'N/A',
-      service:      document.getElementById('demo-product').value || 'Demo Request',
-      company_size: document.getElementById('demo-size').value    || 'Not specified',
-      message:      document.getElementById('demo-message').value.trim(),
-      status:       'New',
-      source:       'Demo Request',
-    }])
-  })
-  .then(function(res) {
-    if (!res.ok) throw new Error('Server error: ' + res.status);
-    return res.json();
-  })
-  .then(function() {
-    succEl.style.display = 'block';
-    document.getElementById('demoForm').reset();
-  })
-  .catch(function(err) {
-    console.error('Demo form error:', err);
-    errEl.style.display = 'block';
-  })
-  .finally(function() {
-    btn.innerHTML = '<span>Book My Demo</span><span>&#8594;</span>';
-    btn.disabled  = false;
-  });
 }
 </script>
 </body>
