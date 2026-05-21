@@ -969,6 +969,8 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
   </div>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 <script>
 var navLinks;
 function toggleNav(){
@@ -1061,65 +1063,104 @@ document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 </script>
 
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
+function handleSubmit(e){
 
+  e.preventDefault();
+  
   // Honeypot check
-  if (document.getElementById('website').value !== '') {
-    console.log('Spam blocked');
+  var honeypot = document.getElementById("website").value;
+
+  if (honeypot !== "") {
+    console.log("Spam blocked");
     return;
   }
 
-  var btn    = document.getElementById('submitBtn');
-  var succEl = document.getElementById('successMsg');
-  var errEl  = document.getElementById('errorMsg');
+  var btn = document.getElementById('submitBtn');
+  btn.innerHTML = '<span>Sending...</span>';
+  btn.disabled = true;
 
-  btn.innerHTML = '<span>Sending…</span>';
-  btn.disabled  = true;
-  succEl.style.display = 'none';
-  errEl.style.display  = 'none';
+  var fname = document.getElementById('fname').value;
+  var lname = document.getElementById('lname').value;
 
-  var fname = document.getElementById('fname').value.trim();
-  var lname = document.getElementById('lname').value.trim();
+  var data = {
+    access_key: '60dccdba-8429-42dc-a452-0d2b872372b8',
+    subject: 'evoAI Enquiry - ' +
+             (document.getElementById('service').value || 'General') +
+             ' - ' + fname + ' ' + lname,
 
-  fetch('https://evoaideskpostlead.evoaiglobal-system.workers.dev/', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept':        'application/json',
-    'x-tenant-id':   'evoai',       // ← required by Worker
-    'x-api-key':     'key-evoai',    // ← required by Worker
-  },
-  body: JSON.stringify([{           // ← array wrapper
-    tenant_id: 'evoai',
-    name:      fname + ' ' + lname,
-    email:     document.getElementById('email').value.trim(),
-    company:   document.getElementById('company').value.trim() || 'N/A',
-    service:   document.getElementById('service').value        || 'General Enquiry',
-    message:   document.getElementById('message').value.trim(),
-    status:    'New',
-    source:    'Website',
-  }])
+    from_name: 'evoAI Website',
+    name: fname + ' ' + lname,
+    email: document.getElementById('email').value,
+    company: document.getElementById('company').value || 'N/A',
+    service: document.getElementById('service').value || 'General Enquiry',
+    message: document.getElementById('message').value
+  };
+
+  fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
   })
-  .then(function(res) {
-  if (!res.ok) {
-    throw new Error('Server error: ' + res.status);
-  }
-  return res.json();
- })
-.then(function(data) {
-  // Only reaches here if response was 2xx
-  succEl.style.display = 'block';
-  document.getElementById('contactForm').reset();
-})
-.catch(function(err) {
-  console.error('Form error:', err);
-  errEl.style.display = 'block';
-})
-.finally(function() {
-  btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
-  btn.disabled  = false;
-});
+  .then(res => res.json())
+  .then(result => {
+
+      if(result.success){
+
+          /* Send lead to Google Sheet */
+
+          fetch("https://script.google.com/macros/s/AKfycbzsjZe_HzG41KflUXlBxkGNnavyMnJIOHlRtcHJduOAjDurfYy_HDDuX4amofnWRICGnw/exec", {
+              method: "POST",
+			  mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json",
+				'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                  name: data.name,
+                  email: data.email,
+				  company: data.company,
+                  service: data.service,
+                  message: data.message,
+                  status: "New",
+                  source: "Website",
+                  page: window.location.href,
+                  useragent: navigator.userAgent,
+				  action: "add",
+				  secret: "websiteform",
+				  website: data.website
+              })
+          }).catch(err => console.log("Sheet logging failed:", err));
+
+          document.getElementById('successMsg').style.display = 'block';
+          document.getElementById('errorMsg').style.display = 'none';
+          document.getElementById('contactForm').reset();
+
+      } else {
+
+          document.getElementById('successMsg').style.display = 'none';
+          document.getElementById('errorMsg').style.display = 'block';
+
+      }
+
+      btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
+      btn.disabled = false;
+
+  })
+  .catch(err => {
+
+      console.log("Form error:", err);
+
+      document.getElementById('successMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+
+      btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
+      btn.disabled = false;
+
+  });
+
 }
 </script>
 </body>
