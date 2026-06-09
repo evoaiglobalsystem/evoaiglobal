@@ -559,8 +559,17 @@ async function processFile(file) {
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ mode: 'ingest', fileName, pdfText: batches[b] })
       });
-      if (!res.ok) throw new Error(`Ingest failed on part ${b + 1}: HTTP ${res.status}`);
-      const batchData = await res.json();
+      if (!res.ok) {
+        const raw = await res.text().catch(() => '(unreadable)');
+        throw new Error(`Ingest HTTP ${res.status}: ${raw.slice(0, 200)}`);
+      }
+      let batchData;
+      try {
+        batchData = await res.json();
+      } catch(e) {
+        const raw = await res.clone().text().catch(() => '(unreadable)');
+        throw new Error(`Invalid JSON from n8n: ${raw.slice(0, 300)}`);
+      }
       const match = (batchData.reply || '').match(/(\d+)\s+chunk/);
       if (match) totalChunks += parseInt(match[1]);
     }
