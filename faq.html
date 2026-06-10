@@ -503,7 +503,7 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
     <li><a href="index.html#demo" class="nav-cta" style="background:var(--blue)!important;color:var(--white)!important;padding:0.45rem 0.85rem!important;margin-right:0.3rem;">Book a Demo</a></li>
     <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
@@ -836,7 +836,15 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
 var navLinks = document.getElementById('navLinks');
 function toggleNav(){navLinks.classList.toggle('open');}
 var hamburger=document.getElementById('hamburger');
-if(hamburger){hamburger.addEventListener('touchend',function(e){e.preventDefault();toggleNav();});}
+if(hamburger){
+  hamburger.addEventListener('click',function(e){e.stopPropagation();toggleNav();});
+}
+// Close nav when tapping outside on mobile
+document.addEventListener('click',function(e){
+  if(navLinks.classList.contains('open')&&!navLinks.contains(e.target)&&e.target!==hamburger&&!hamburger.contains(e.target)){
+    navLinks.classList.remove('open');
+  }
+});
 
 // Handle multiple dropdowns
 var dropdowns=document.querySelectorAll('.nav-dropdown');
