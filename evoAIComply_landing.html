@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>evoAIComply – AI-Powered CMMC Compliance for Small Defense Contractors</title>
+<meta name="description" content="evoAIComply guides small and mid-size defense contractors through CMMC Level 2 / NIST SP 800-171 compliance with an AI-driven readiness assessment. No SaaS lock-in, no compliance consultants required.">
+<style>
+  :root{
+    --navy-950:#0a1628;
+    --navy-900:#0f1f38;
+    --navy-800:#152a4a;
+    --navy-700:#1c3a5e;
+    --blue-500:#2f6fed;
+    --blue-400:#4f8bff;
+    --teal-400:#22c3d6;
+    --teal-300:#5fe0ee;
+    --ink-100:#f4f7fc;
+    --ink-300:#c4cfe0;
+    --ink-500:#8a99b8;
+    --line:#24365a;
+    --good:#34d399;
+    --radius:14px;
+    --radius-sm:8px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--navy-950);
+    color:var(--ink-100);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,22,40,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;letter-spacing:-.01em;}
+  .brand .mark{
+    width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(135deg,var(--blue-500),var(--teal-400));
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;font-weight:800;color:#fff;
+    box-shadow:0 4px 14px rgba(47,111,237,.35);
+  }
+  .brand .sub{color:var(--ink-500);font-weight:500;font-size:12px;display:block;margin-top:-2px;}
+  nav.links{display:flex;align-items:center;gap:28px;}
+  nav.links a.navlink{color:var(--ink-300);font-size:14.5px;font-weight:500;transition:color .15s;}
+  nav.links a.navlink:hover{color:var(--ink-100);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:11px 20px;border-radius:10px;font-size:14.5px;font-weight:600;
+    cursor:pointer;border:1px solid transparent;transition:transform .15s,box-shadow .15s,background .15s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue-500),var(--teal-400));
+    color:#fff;
+    box-shadow:0 6px 18px rgba(47,111,237,.32);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(47,111,237,.42);}
+  .btn-ghost{
+    background:transparent;border-color:var(--line);color:var(--ink-100);
+  }
+  .btn-ghost:hover{border-color:var(--blue-400);}
+  .btn-sm{padding:9px 16px;font-size:13.5px;}
+  .mobile-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:76px 0 64px;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;top:-180px;right:-160px;width:560px;height:560px;
+    background:radial-gradient(circle,rgba(34,195,214,.16),transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-220px;left:-160px;width:480px;height:480px;
+    background:radial-gradient(circle,rgba(47,111,237,.14),transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(34,195,214,.1);border:1px solid rgba(34,195,214,.3);
+    color:var(--teal-300);font-size:13px;font-weight:600;
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-300);}
+  .hero h1{
+    font-size:clamp(32px,4.4vw,52px);
+    font-weight:800;letter-spacing:-.02em;line-height:1.08;
+    max-width:780px;margin:0 0 22px;
+    position:relative;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(135deg,var(--blue-400),var(--teal-300));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lede{
+    font-size:18px;color:var(--ink-300);max-width:620px;margin:0 0 32px;
+    position:relative;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:18px;position:relative;}
+  .hero-note{color:var(--ink-500);font-size:13.5px;position:relative;}
+
+  /* ---------- Trust strip ---------- */
+  .trust{padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .trust .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:center;}
+  .trust-item{display:flex;align-items:center;gap:8px;color:var(--ink-500);font-size:13.5px;font-weight:500;}
+  .trust-item .ico{color:var(--teal-400);font-size:15px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:72px 0;}
+  .section-head{max-width:640px;margin:0 0 40px;}
+  .kicker{
+    color:var(--teal-400);font-size:13px;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:10px;display:block;
+  }
+  .section-head h2{font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:-.01em;margin:0 0 14px;}
+  .section-head p{color:var(--ink-300);font-size:16px;margin:0;}
+
+  /* ---------- Problem ---------- */
+  .problem{background:var(--navy-900);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .problem-card{
+    background:var(--navy-800);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;
+  }
+  .problem-card .ico{font-size:22px;margin-bottom:12px;display:block;}
+  .problem-card h3{font-size:16px;font-weight:700;margin:0 0 8px;}
+  .problem-card p{font-size:14.5px;color:var(--ink-300);margin:0;}
+
+  /* ---------- Features ---------- */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .feat-card{
+    background:var(--navy-800);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;transition:border-color .15s,transform .15s;
+  }
+  .feat-card:hover{border-color:rgba(79,139,255,.45);transform:translateY(-2px);}
+  .feat-card .ico{font-size:24px;margin-bottom:14px;display:block;}
+  .feat-card h3{font-size:16.5px;font-weight:700;margin:0 0 8px;}
+  .feat-card p{font-size:14.5px;color:var(--ink-300);margin:0 0 12px;}
+  .feat-tag{
+    display:inline-block;font-size:12px;font-weight:600;color:var(--teal-300);
+    background:rgba(34,195,214,.08);border:1px solid rgba(34,195,214,.22);
+    padding:4px 10px;border-radius:999px;
+  }
+
+  /* ---------- How it works ---------- */
+  .how{background:var(--navy-900);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .how-step{position:relative;padding:24px 20px 20px;background:var(--navy-800);border:1px solid var(--line);border-radius:var(--radius);}
+  .how-step .num{
+    width:30px;height:30px;border-radius:8px;
+    background:linear-gradient(135deg,var(--blue-500),var(--teal-400));
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:800;color:#fff;margin-bottom:14px;
+  }
+  .how-step h3{font-size:15.5px;font-weight:700;margin:0 0 6px;}
+  .how-step p{font-size:13.5px;color:var(--ink-300);margin:0;}
+
+  /* ---------- Outcomes ---------- */
+  .outcomes-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;}
+  .outcomes-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+  .outcomes-list li{display:flex;gap:12px;font-size:15.5px;color:var(--ink-100);}
+  .outcomes-list li .check{
+    flex:0 0 auto;width:22px;height:22px;border-radius:6px;
+    background:rgba(52,211,153,.14);color:var(--good);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+    margin-top:1px;
+  }
+  .outcomes-list b{color:#fff;}
+  .stat-card{
+    background:linear-gradient(160deg,var(--navy-800),var(--navy-900));
+    border:1px solid var(--line);border-radius:var(--radius);padding:30px;
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  }
+  .stat{padding:6px 0;}
+  .stat .num{font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--blue-400),var(--teal-300));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .label{font-size:13px;color:var(--ink-500);margin-top:4px;}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:linear-gradient(135deg,var(--navy-800),var(--navy-700));
+    border:1px solid var(--line);border-radius:20px;
+    padding:48px;text-align:center;margin:0 24px;
+    max-width:calc(var(--maxw) - 48px);
+    margin-left:auto;margin-right:auto;
+    position:relative;overflow:hidden;
+  }
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%,rgba(34,195,214,.14),transparent 60%);
+  }
+  .cta-band h2{font-size:clamp(22px,3vw,30px);font-weight:800;margin:0 0 12px;position:relative;}
+  .cta-band p{color:var(--ink-300);font-size:15.5px;margin:0 0 26px;position:relative;}
+  .cta-band .hero-ctas{justify-content:center;position:relative;}
+  .cta-band .hero-note{display:block;margin-top:16px;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--navy-900);padding:52px 0 26px;}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+  .foot-brand .brand{margin-bottom:12px;}
+  .foot-brand p{color:var(--ink-500);font-size:13.5px;max-width:300px;margin:0;}
+  .foot-col h4{font-size:13px;font-weight:700;color:var(--ink-100);margin:0 0 14px;text-transform:uppercase;letter-spacing:.04em;}
+  .foot-col a{display:block;color:var(--ink-500);font-size:14px;margin-bottom:10px;transition:color .15s;}
+  .foot-col a:hover{color:var(--ink-100);}
+  .foot-bottom{
+    border-top:1px solid var(--line);padding-top:22px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  }
+  .foot-bottom p{color:var(--ink-500);font-size:13px;margin:0;}
+  .foot-bottom .legal{display:flex;gap:18px;}
+  .foot-bottom .legal a{color:var(--ink-500);font-size:13px;}
+  .foot-bottom .legal a:hover{color:var(--ink-100);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:920px){
+    .problem-grid,.feat-grid{grid-template-columns:repeat(2,1fr);}
+    .how-grid{grid-template-columns:repeat(2,1fr);}
+    .outcomes-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:680px){
+    nav.links{display:none;}
+    .nav-cta .btn-ghost{display:none;}
+    .problem-grid,.feat-grid,.how-grid{grid-template-columns:1fr;}
+    .stat-card{grid-template-columns:1fr 1fr;padding:22px;}
+    .cta-band{padding:34px 22px;margin:0 16px;}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .hero{padding:52px 0 44px;}
+    section{padding:52px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <span class="mark">EC</span>
+      <span>evoAIComply<span class="sub">by evoAI Global</span></span>
+    </a>
+    <nav class="links">
+      <a class="navlink" href="#features">Features</a>
+      <a class="navlink" href="#how">How it works</a>
+      <a class="navlink" href="#outcomes">Outcomes</a>
+      <a class="navlink" href="https://evoaiglobal.ai/#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="https://evoaiglobal.ai/#contact">Contact Sales</a>
+      <a class="btn btn-primary btn-sm" href="#demo">Book a Demo</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>AI-Powered · Built for SME Defense Contractors</span>
+    <h1>CMMC compliance, <span class="accent">made simple</span> for small businesses.</h1>
+    <p class="lede">evoAIComply runs an AI-guided readiness assessment against CMMC Level 2 / NIST SP 800-171 — no compliance consultants, no bloated SaaS, no guesswork. Just a clear path to certification.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" id="demo" href="https://evoaiglobal.ai/#contact">Book a Demo</a>
+      <a class="btn btn-ghost" href="#how">See How It Works</a>
+    </div>
+    <span class="hero-note">Built for SMEs · File-upload based, no third-party data sharing</span>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <span class="trust-item"><span class="ico">✓</span> CMMC 2.0 Level 2 aligned</span>
+    <span class="trust-item"><span class="ico">✓</span> NIST SP 800-171 control mapping</span>
+    <span class="trust-item"><span class="ico">✓</span> No SaaS lock-in</span>
+    <span class="trust-item"><span class="ico">✓</span> Built for SME budgets</span>
+  </div>
+</div>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The problem</span>
+      <h2>CMMC shouldn't require an enterprise compliance team.</h2>
+      <p>Most small defense contractors don't have a CISO, a GRC platform, or $50K to spend on consultants — but the DoD's CMMC requirement doesn't care about company size.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <span class="ico">📋</span>
+        <h3>110+ scattered controls</h3>
+        <p>NIST SP 800-171 controls live in spreadsheets, PDFs, and someone's inbox — never in one place.</p>
+      </div>
+      <div class="problem-card">
+        <span class="ico">💸</span>
+        <h3>Consultants are expensive</h3>
+        <p>Traditional CMMC consulting runs into tens of thousands of dollars — out of reach for most SMEs.</p>
+      </div>
+      <div class="problem-card">
+        <span class="ico">⏳</span>
+        <h3>No clear starting point</h3>
+        <p>Teams don't know their current readiness score, what's missing, or what to fix first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How evoAIComply helps</span>
+      <h2>One guided assessment. A clear compliance roadmap.</h2>
+      <p>An AI interview walks your team through every required control — and turns it into a prioritized, audit-ready action plan.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="ico">🤖</span>
+        <h3>AI-Guided Interview</h3>
+        <p>A conversational assessment asks the right questions for each control — no compliance jargon, no guesswork.</p>
+        <span class="feat-tag">Plain-language Q&A</span>
+      </div>
+      <div class="feat-card">
+        <span class="ico">📊</span>
+        <h3>Readiness Scoring</h3>
+        <p>Every control is scored against CMMC Level 2 / NIST SP 800-171 so you know exactly where you stand.</p>
+        <span class="feat-tag">Live readiness %</span>
+      </div>
+      <div class="feat-card">
+        <span class="ico">📁</span>
+        <h3>File-Upload Evidence</h3>
+        <p>Upload existing policies and evidence directly — no new SaaS tools to adopt, no integrations to configure.</p>
+        <span class="feat-tag">No integrations required</span>
+      </div>
+      <div class="feat-card">
+        <span class="ico">🧭</span>
+        <h3>Gap Roadmap</h3>
+        <p>A prioritized list of exactly what's missing and what to fix first — ordered by audit risk, not alphabetically.</p>
+        <span class="feat-tag">Prioritized by risk</span>
+      </div>
+      <div class="feat-card">
+        <span class="ico">📄</span>
+        <h3>Exportable Reports</h3>
+        <p>Generate audit-ready PDF summaries of your assessment to share with leadership, auditors, or primes.</p>
+        <span class="feat-tag">One-click PDF export</span>
+      </div>
+      <div class="feat-card">
+        <span class="ico">🔒</span>
+        <h3>Your Data Stays Yours</h3>
+        <p>No data resale, no third-party sharing. Built for SMEs who can't risk their compliance data leaking.</p>
+        <span class="feat-tag">Private by design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">How it works</span>
+      <h2>From first login to audit-ready, in four steps.</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <span class="num">1</span>
+        <h3>Start the Interview</h3>
+        <p>Answer plain-language questions about your current security practices — no prior compliance knowledge needed.</p>
+      </div>
+      <div class="how-step">
+        <span class="num">2</span>
+        <h3>Get Scored</h3>
+        <p>evoAIComply maps your answers to CMMC Level 2 / NIST SP 800-171 controls and calculates your readiness score.</p>
+      </div>
+      <div class="how-step">
+        <span class="num">3</span>
+        <h3>Close the Gaps</h3>
+        <p>Follow a prioritized roadmap of exactly what to fix — backed by templates and plain-English guidance.</p>
+      </div>
+      <div class="how-step">
+        <span class="num">4</span>
+        <h3>Export & Certify</h3>
+        <p>Generate your audit-ready report and walk into your CMMC assessment prepared, not guessing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="outcomes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Why it matters</span>
+      <h2>Built for SMEs that need to win — and keep — DoD contracts.</h2>
+    </div>
+    <div class="outcomes-grid">
+      <ul class="outcomes-list">
+        <li><span class="check">✓</span><span><b>Stay eligible for DoD contracts</b> — CMMC certification keeps you on the contractor list, not off it.</span></li>
+        <li><span class="check">✓</span><span><b>Skip the consultant markup</b> — get a clear readiness picture before spending on outside help.</span></li>
+        <li><span class="check">✓</span><span><b>Know your real risk</b> — a live score replaces guesswork with a number you can act on.</span></li>
+        <li><span class="check">✓</span><span><b>Move at SME speed</b> — no lengthy onboarding, no new platforms for your team to learn.</span></li>
+      </ul>
+      <div class="stat-card">
+        <div class="stat"><div class="num">110+</div><div class="label">NIST 800-171 controls mapped</div></div>
+        <div class="stat"><div class="num">0</div><div class="label">New SaaS tools required</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Guided AI interview to start</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">File-upload, no data sharing</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta-band">
+    <h2>Get your CMMC readiness score.</h2>
+    <p>Book a short demo and see exactly where your business stands on CMMC Level 2 / NIST SP 800-171 — no commitment required.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://evoaiglobal.ai/#contact">Book a Demo</a>
+      <a class="btn btn-ghost" href="https://evoaiglobal.ai/#contact">Talk to evoAI</a>
+    </div>
+    <span class="hero-note">No credit card · No long-term contract · Built for small business budgets</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <span class="mark">EC</span>
+          <span>evoAIComply</span>
+        </a>
+        <p>AI-powered CMMC and NIST SP 800-171 compliance readiness for small and mid-size defense contractors. Built by evoAI Global.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="https://evoaiglobal.ai/#contact">Book a Demo</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="https://evoaiglobal.ai">About evoAI</a>
+        <a href="https://evoaiglobal.ai/#contact">Contact</a>
+        <a href="https://desk.evoaiglobal.ai/">evoAIDesk CRM</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 evoAI. All rights reserved.</p>
+      <div class="legal">
+        <a href="https://evoaiglobal.ai/privacy-policy.html">Privacy Policy</a>
+        <a href="https://evoaiglobal.ai/terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
