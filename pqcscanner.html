@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PQC Readiness Scanner – Post-Quantum Cryptography Assessment Report | evoAI</title>
+<meta name="description" content="Scan your HTTPS endpoints and get a scored post-quantum readiness report: key exchange, TLS, ciphers and certificates, with clear next steps.">
+<meta property="og:title" content="PQC Readiness Scanner by evoAI">
+<meta property="og:description" content="A scored post-quantum cryptography assessment report for your public HTTPS endpoints.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<style>
+:root{
+  --ink:#0f1b2d; --muted:#51607a; --paper:#fff; --mist:#f3f7fb; --line:#dbe4ee;
+  --green:#12873f; --green-bg:#e3f6ea; --blue:#1746d1; --amber:#8a5a00; --amber-bg:#fff2d6;
+  --max:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper)}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none}
+.brand img{display:block;height:44px;width:auto}
+nav{display:flex;align-items:center;gap:22px}
+nav a{color:var(--muted);text-decoration:none;font-size:15px}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--green);background:var(--green);color:#fff}
+.btn:hover{background:#0d6e32;border-color:#0d6e32}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:var(--green-bg)}
+nav .btn{padding:8px 16px;font-size:15px;color:#fff}
+.hero{padding:64px 0 56px;background:linear-gradient(180deg,var(--mist),var(--paper))}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+h1{font-size:clamp(32px,4.6vw,48px);line-height:1.12;margin:0 0 18px;letter-spacing:-.02em}
+.lead{font-size:19px;color:var(--muted);margin:0 0 28px;max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.fine{margin:16px 0 0;font-size:14px;color:var(--muted)}
+.sample{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 10px 30px rgba(15,27,45,.08)}
+.sample h2{margin:0 0 4px;font-size:15px;color:var(--muted);font-weight:600}
+.score{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+.score b{font-size:54px;line-height:1;letter-spacing:-.03em}
+.score span{color:var(--muted);font-size:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.pass{background:var(--green-bg);color:var(--green)} .warn{background:var(--amber-bg);color:var(--amber)}
+.cap{margin:12px 0 0;font-size:13px;color:var(--muted)}
+section{padding:60px 0}
+section.alt{background:var(--mist)}
+h2.t{font-size:clamp(25px,3.2vw,34px);line-height:1.2;margin:0 0 14px;letter-spacing:-.01em}
+.sub{color:var(--muted);max-width:42em;margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.item{padding:20px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.item h3{margin:0 0 6px;font-size:18px}
+.item p{margin:0;color:var(--muted);font-size:15.5px}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+ol.steps li{counter-increment:s;padding:20px 20px 20px 62px;position:relative;background:#fff;border:1px solid var(--line);border-radius:10px}
+ol.steps li::before{content:counter(s);position:absolute;left:18px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:grid;place-items:center}
+ol.steps h3{margin:0 0 4px;font-size:18px} ol.steps p{margin:0;color:var(--muted);font-size:15.5px}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px}
+details p{margin:10px 0 0;color:var(--muted)}
+.band{background:var(--ink);color:#fff;text-align:center;padding:56px 0}
+.band h2{margin:0 0 10px;font-size:clamp(25px,3.4vw,34px)}
+.band p{margin:0 0 24px;color:#c4cfdf}
+footer{padding:28px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+footer a{color:var(--muted);margin-left:16px}
+.foot-brand{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-brand img{height:34px;width:auto}
+.foot-brand a.evo{margin:0;color:var(--ink);font-weight:700}
+.foot-links{display:flex;flex-direction:column;gap:4px;text-align:right}
+.foot-links a:first-child{margin-left:0}
+@media(max-width:820px){.foot-links{text-align:left}}
+@media(max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  nav a:not(.btn){display:none}
+  section{padding:44px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="PQC Readiness Scanner home"><img src="images/pqcscanner_logo.png" alt="PQC Readiness Scanner" width="520" height="145"></a>
+    <nav>
+      <a href="#report">The report</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="https://evoaiglobal.ai/#contact">Request access</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Is your website ready for post-quantum cryptography?</h1>
+        <p class="lead">Scan your public HTTPS endpoints and get a scored assessment report: key exchange, TLS version, ciphers and certificates, with clear next steps.</p>
+        <div class="cta">
+          <a class="btn" href="https://evoaiglobal.ai/#contact">Request an access key</a>
+          <a class="btn ghost" href="https://pqcscan.evoaiglobal.ai/">I have a key: open scanner</a>
+        </div>
+        <p class="fine">Access is by API key issued by evoAI. Informational assessment only; scan only systems you are authorised to test.</p>
+      </div>
+      <div class="sample" role="img" aria-label="Illustrative sample report: score 79 out of 100, three checks passed, two warnings on classical certificates">
+        <h2>Sample result (illustrative)</h2>
+        <div class="score"><b>79</b><span>/ 100, the best achievable today</span></div>
+        <div class="row"><span>Key exchange: X25519MLKEM768</span><span class="tag pass">PASS</span></div>
+        <div class="row"><span>TLS 1.3 only</span><span class="tag pass">PASS</span></div>
+        <div class="row"><span>Cipher: AES-256-GCM</span><span class="tag pass">PASS</span></div>
+        <div class="row"><span>Certificate key: classical</span><span class="tag warn">WARN</span></div>
+        <div class="row"><span>Signature: classical</span><span class="tag warn">WARN</span></div>
+        <p class="cap">Public CAs do not yet issue post-quantum certificates, so the two warnings are expected for every public site.</p>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 class="t">Encrypted traffic recorded today can be read later.</h2>
+      <p class="sub">Attackers can store encrypted traffic now and decrypt it once quantum computers are powerful enough. Hybrid ML-KEM key exchange, standardised by NIST as FIPS 203, closes that gap, and many sites already support it. The question is whether yours does, on every address you serve.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="report">
+    <div class="wrap">
+      <h2 class="t">What the assessment report covers</h2>
+      <p class="sub">Every endpoint is tested individually, IPv4 and IPv6, and the evidence is shown so you can verify each result.</p>
+      <div class="grid">
+        <div class="item"><h3>Key exchange</h3><p>Whether the server accepts hybrid ML-KEM, confirmed with a browser-like handshake. Carries the most weight in the score.</p></div>
+        <div class="item"><h3>TLS version and ciphers</h3><p>TLS 1.3 support, whether old versions are still accepted, and the strength of the negotiated cipher.</p></div>
+        <div class="item"><h3>Certificate and signature</h3><p>The key type and signature algorithm of your certificate, and how they fit the post-quantum timeline.</p></div>
+        <div class="item"><h3>Score and next steps</h3><p>A 0 to 100 readiness score, findings per target, and a prioritised list of what to fix first.</p></div>
+        <div class="item"><h3>PDF report</h3><p>Download a full report with the scoring method, or a brief one for routine sharing.</p></div>
+        <div class="item"><h3>Dashboard and API</h3><p>Use the web dashboard for one-off scans, or the API to check your endpoints on a schedule.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2 class="t">How it works</h2>
+      <p class="sub">From domain name to report in three steps.</p>
+      <ol class="steps">
+        <li><h3>Get your access key</h3><p>Contact evoAI and we issue an API key for the scanner.</p></li>
+        <li><h3>Scan your domains</h3><p>Enter the hostnames you want assessed. The scanner resolves every address and tests each one.</p></li>
+        <li><h3>Review and download</h3><p>Read the findings and next steps, then export the PDF or CSV.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <h2 class="t">Common questions</h2>
+      <details><summary>How do I get access?</summary><p>The scanner uses API keys issued by evoAI. <a href="https://evoaiglobal.ai/#contact">Contact us</a> to request one, then enter it in the scanner dashboard or send it in the <code>X-API-Key</code> header when using the API.</p></details>
+      <details><summary>Why is the best score 79 and not 100?</summary><p>Full marks on certificate checks need a post-quantum certificate, and publicly trusted CAs do not issue them yet. The report shows the score against what is achievable today.</p></details>
+      <details><summary>Is this a compliance audit?</summary><p>No. It is an informational technical assessment of what your servers offer at scan time. It does not certify compliance with any standard.</p></details>
+      <details><summary>Can I scan any website?</summary><p>Only systems you own or are authorised to test.</p></details>
+      <details><summary>Will the score change over time?</summary><p>Standards and browser support are moving quickly, so the scoring rules are reviewed regularly. Each report states the scanner version and when the standards data was last reviewed.</p></details>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <h2>See where your endpoints stand.</h2>
+      <p>Request an access key and get your assessment report.</p>
+      <a class="btn" href="https://evoaiglobal.ai/#contact">Request an access key</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="images/pqcscanner_logo.png" alt="PQC Readiness Scanner" width="520" height="145">
+      <span>Powered by <a href="https://evoaiglobal.ai/#services" class="evo">evoAI</a></span>
+    </div>
+    <div class="foot-links">
+      <span>© 2026 evoAI. All rights reserved.</span>
+      <span><a href="https://evoaiglobal.ai/#contact">Contact</a><a href="https://evoaiglobal.ai/privacy-policy.html">Privacy Policy</a><a href="https://evoaiglobal.ai/terms.html">Terms &amp; Conditions</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
