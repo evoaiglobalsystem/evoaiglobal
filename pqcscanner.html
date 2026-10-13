@@ -52,7 +52,7 @@ h1{font-size:clamp(32px,4.6vw,48px);line-height:1.12;margin:0 0 18px;letter-spac
 .tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
 .pass{background:var(--green-bg);color:var(--green)} .warn{background:var(--amber-bg);color:var(--amber)}
 .cap{margin:12px 0 0;font-size:13px;color:var(--muted)}
-section{padding:60px 0}
+section{padding:60px 0;scroll-margin-top:68px}
 section.alt{background:var(--mist)}
 h2.t{font-size:clamp(25px,3.2vw,34px);line-height:1.2;margin:0 0 14px;letter-spacing:-.01em}
 .sub{color:var(--muted);max-width:42em;margin:0 0 32px}
@@ -67,9 +67,22 @@ ol.steps h3{margin:0 0 4px;font-size:18px} ol.steps p{margin:0;color:var(--muted
 details{border-bottom:1px solid var(--line);padding:16px 0}
 summary{cursor:pointer;font-weight:600;font-size:18px}
 details p{margin:10px 0 0;color:var(--muted)}
-.band{background:var(--ink);color:#fff;text-align:center;padding:56px 0}
-.band h2{margin:0 0 10px;font-size:clamp(25px,3.4vw,34px)}
-.band p{margin:0 0 24px;color:#c4cfdf}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.mail{color:var(--muted);font-size:15px}
+.contact-form{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 10px 30px rgba(15,27,45,.06)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:14px;font-weight:600}
+.form-group input,.form-group textarea{font:inherit;font-size:16px;padding:10px 12px;border:1px solid #b9c6d6;border-radius:8px;background:#fff;color:var(--ink)}
+.form-group input:focus,.form-group textarea:focus{outline:3px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.form-group input[readonly]{background:var(--mist);font-weight:600;color:var(--ink)}
+.form-submit{font:inherit;font-weight:600;padding:12px 24px;border:2px solid var(--green);border-radius:8px;background:var(--green);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;transition:background-color .15s,box-shadow .15s}
+.form-submit:hover:not(:disabled){background:#0d6e32;border-color:#0d6e32;box-shadow:0 0 0 4px rgba(18,135,63,.25)}
+.form-submit:disabled{opacity:.7;cursor:progress}
+.form-note{margin:0;font-size:13px;color:var(--muted)}
+.form-msg{display:none;padding:12px 14px;border-radius:8px;font-size:15px;font-weight:500}
+.form-msg.success{background:var(--green-bg);color:var(--green);border:1px solid #9fd8b4}
+.form-msg.error{background:#fde8e8;color:#9b1c1c;border:1px solid #f1b0b0}
 footer{padding:28px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 footer a{color:var(--muted);margin-left:16px}
@@ -80,7 +93,8 @@ footer a{color:var(--muted);margin-left:16px}
 .foot-links a:first-child{margin-left:0}
 @media(max-width:820px){.foot-links{text-align:left}}
 @media(max-width:820px){
-  .hero .wrap{grid-template-columns:1fr;gap:32px}
+  .hero .wrap,.contact-grid{grid-template-columns:1fr;gap:32px}
+  .form-row{grid-template-columns:1fr}
   nav a:not(.btn){display:none}
   section{padding:44px 0}
 }
@@ -95,7 +109,7 @@ footer a{color:var(--muted);margin-left:16px}
       <a href="#report">The report</a>
       <a href="#how">How it works</a>
       <a href="#faq">FAQ</a>
-      <a class="btn" href="https://evoaiglobal.ai/#contact">Request access</a>
+      <a class="btn" href="#contact">Request access</a>
     </nav>
   </div>
 </header>
@@ -107,7 +121,7 @@ footer a{color:var(--muted);margin-left:16px}
         <h1>Is your website ready for post-quantum cryptography?</h1>
         <p class="lead">Scan your public HTTPS endpoints and get a scored assessment report: key exchange, TLS version, ciphers and certificates, with clear next steps.</p>
         <div class="cta">
-          <a class="btn" href="https://evoaiglobal.ai/#contact">Request an access key</a>
+          <a class="btn" href="#contact">Request an access key</a>
           <a class="btn ghost" href="https://pqcscan.evoaiglobal.ai/">I have a key: open scanner</a>
         </div>
         <p class="fine">Access is by API key issued by evoAI. Informational assessment only; scan only systems you are authorised to test.</p>
@@ -152,7 +166,7 @@ footer a{color:var(--muted);margin-left:16px}
       <h2 class="t">How it works</h2>
       <p class="sub">From domain name to report in three steps.</p>
       <ol class="steps">
-        <li><h3>Get your access key</h3><p>Contact evoAI and we issue an API key for the scanner.</p></li>
+        <li><h3>Get your access key</h3><p>Send the request form and evoAI issues an API key for the scanner.</p></li>
         <li><h3>Scan your domains</h3><p>Enter the hostnames you want assessed. The scanner resolves every address and tests each one.</p></li>
         <li><h3>Review and download</h3><p>Read the findings and next steps, then export the PDF or CSV.</p></li>
       </ol>
@@ -162,7 +176,7 @@ footer a{color:var(--muted);margin-left:16px}
   <section class="alt" id="faq">
     <div class="wrap">
       <h2 class="t">Common questions</h2>
-      <details><summary>How do I get access?</summary><p>The scanner uses API keys issued by evoAI. <a href="https://evoaiglobal.ai/#contact">Contact us</a> to request one, then enter it in the scanner dashboard or send it in the <code>X-API-Key</code> header when using the API.</p></details>
+      <details><summary>How do I get access?</summary><p>The scanner uses API keys issued by evoAI. <a href="#contact">Request one using the form</a>, then enter it in the scanner dashboard or send it in the <code>X-API-Key</code> header when using the API.</p></details>
       <details><summary>Why is the best score 79 and not 100?</summary><p>Full marks on certificate checks need a post-quantum certificate, and publicly trusted CAs do not issue them yet. The report shows the score against what is achievable today.</p></details>
       <details><summary>Is this a compliance audit?</summary><p>No. It is an informational technical assessment of what your servers offer at scan time. It does not certify compliance with any standard.</p></details>
       <details><summary>Can I scan any website?</summary><p>Only systems you own or are authorised to test.</p></details>
@@ -170,13 +184,48 @@ footer a{color:var(--muted);margin-left:16px}
     </div>
   </section>
 
-  <div class="band">
-    <div class="wrap">
-      <h2>See where your endpoints stand.</h2>
-      <p>Request an access key and get your assessment report.</p>
-      <a class="btn" href="https://evoaiglobal.ai/#contact">Request an access key</a>
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 class="t">Request your PQC Readiness Assessment Key</h2>
+        <p class="sub">Tell us who you are and which domains you want assessed. We will send you an API key for the scanner.</p>
+        <p class="mail">Prefer email? <a href="mailto:info@evoaiglobal.ai">info@evoaiglobal.ai</a></p>
+      </div>
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname"  placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="john@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Your company name">
+        </div>
+        <div class="form-group">
+          <label for="service">Request</label>
+          <input type="text" id="service" name="service" value="Request for PQC Readiness Assessment Key" readonly>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Tell us which domains you want assessed and how you plan to use the report..." required></textarea>
+        </div>
+        <input type="text" name="website" id="website" autocomplete="off" style="display:none;">
+        <button type="submit" class="form-submit" id="submitBtn"><span>Send Message</span><span>&#8594;</span></button>
+        <p class="form-note">We reply at the earliest. No spam, ever.</p>
+        <div class="form-msg success" id="successMsg">&#10003; &nbsp;Message sent! We'll get back to you as soon as possible.</div>
+        <div class="form-msg error" id="errorMsg">Something went wrong. Please email info@evoaiglobal.ai directly.</div>
+      </form>
     </div>
-  </div>
+  </section>
 </main>
 
 <footer>
@@ -187,10 +236,111 @@ footer a{color:var(--muted);margin-left:16px}
     </div>
     <div class="foot-links">
       <span>© 2026 evoAI. All rights reserved.</span>
-      <span><a href="https://evoaiglobal.ai/#contact">Contact</a><a href="https://evoaiglobal.ai/privacy-policy.html">Privacy Policy</a><a href="https://evoaiglobal.ai/terms.html">Terms &amp; Conditions</a></span>
+      <span><a href="#contact">Contact</a><a href="https://evoaiglobal.ai/privacy-policy.html">Privacy Policy</a><a href="https://evoaiglobal.ai/terms.html">Terms &amp; Conditions</a></span>
     </div>
   </div>
 </footer>
 
+<script>
+function handleSubmit(e){
+
+  e.preventDefault();
+  
+  // Honeypot check
+  var honeypot = document.getElementById("website").value;
+
+  if (honeypot !== "") {
+    console.log("Spam blocked");
+    return;
+  }
+
+  var btn = document.getElementById('submitBtn');
+  btn.innerHTML = '<span>Sending...</span>';
+  btn.disabled = true;
+
+  var fname = document.getElementById('fname').value;
+  var lname = document.getElementById('lname').value;
+
+  var data = {
+    access_key: '60dccdba-8429-42dc-a452-0d2b872372b8',
+    subject: 'evoAI Enquiry - ' +
+             (document.getElementById('service').value || 'General') +
+             ' - ' + fname + ' ' + lname,
+
+    from_name: 'evoAI Website',
+    name: fname + ' ' + lname,
+    email: document.getElementById('email').value,
+    company: document.getElementById('company').value || 'N/A',
+    service: document.getElementById('service').value || 'General Enquiry',
+    message: document.getElementById('message').value
+  };
+
+  fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(result => {
+
+      if(result.success){
+
+          /* Send lead to Google Sheet */
+
+          fetch("https://script.google.com/macros/s/AKfycbzsjZe_HzG41KflUXlBxkGNnavyMnJIOHlRtcHJduOAjDurfYy_HDDuX4amofnWRICGnw/exec", {
+              method: "POST",
+			  mode: "no-cors",
+              headers: {
+                "Content-Type": "application/json",
+				'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                  name: data.name,
+                  email: data.email,
+				  company: data.company,
+                  service: data.service,
+                  message: data.message,
+                  status: "New",
+                  source: "Website",
+                  page: window.location.href,
+                  useragent: navigator.userAgent,
+				  action: "add",
+				  secret: "websiteform",
+				  website: data.website
+              })
+          }).catch(err => console.log("Sheet logging failed:", err));
+
+          document.getElementById('successMsg').style.display = 'block';
+          document.getElementById('errorMsg').style.display = 'none';
+          document.getElementById('contactForm').reset();
+
+      } else {
+
+          document.getElementById('successMsg').style.display = 'none';
+          document.getElementById('errorMsg').style.display = 'block';
+
+      }
+
+      btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
+      btn.disabled = false;
+
+  })
+  .catch(err => {
+
+      console.log("Form error:", err);
+
+      document.getElementById('successMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+
+      btn.innerHTML = '<span>Send Message</span><span>&#8594;</span>';
+      btn.disabled = false;
+
+  });
+
+}
+</script>
 </body>
 </html>
