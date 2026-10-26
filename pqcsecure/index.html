@@ -729,7 +729,7 @@ const gv=id=>{const e=document.getElementById(id);return e?e.value.trim():""},gc
 document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b||b.disabled)return;const a=b.dataset.a;
  if(a=="go"){if((b.dataset.v=="uploads"||b.dataset.v=="stds")&&!S.ok)return go("home");if(b.dataset.v=="stds"&&S.view!="stds")S.pv=S.view;go(b.dataset.v)}
  else if(a=="signin"){S.email=document.getElementById("em").value.trim();S.key=document.getElementById("ky").value.trim();
-  if(!/^\S+@\S+\.\S+$/.test(S.email)){S.err="Enter a valid email address.";S.ok=0}else if(S.key.length<8){S.err="API key must be at least 8 characters.";S.ok=0}else{S.err="";S.ok=1;S.edit=0;ldStd();S.country="US";S.stds=CT.US.slice();load();resume()}render()}
+  if(!S.email){S.err="Please enter your email ID to continue.";S.ok=0}else if(!/^\S+@\S+\.\S+$/.test(S.email)){S.err="That doesn’t look like a valid email address. Please check it and try again, for example name@company.com.";S.ok=0}else if(S.email.toLowerCase()!=="shekhar@evoaiglobal.ai"){S.err="Sorry, we couldn’t sign you in. This email ID doesn’t have access to the demo. Please use your registered email or contact support.";S.ok=0}else if(!S.key){S.err="Please enter your API key to continue. If you don’t have one, use “Request enrollment” below.";S.ok=0}else{S.err="";S.ok=1;S.edit=0;ldStd();S.country="US";S.stds=CT.US.slice();load();resume()}render()}
  else if(a=="enrol"){S.enr=1;S.enrDone=0;S.err="";render()}
  else if(a=="enrback"){S.enr=0;S.enrDone=0;S.err="";render()}
  else if(a=="enroll"){const n=document.getElementById("en").value.trim(),m=document.getElementById("ee").value.trim(),c=document.getElementById("ec").value.trim();S.enrName=n;S.enrEmail=m;S.enrCo=c;
