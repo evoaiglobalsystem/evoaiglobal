@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post-Quantum Cryptography (PQC) Standards Manager | evoAI</title>
+<meta name="description" content="Reference service for post-quantum readiness: one API says if an algorithm is allowed today, when it must go and what replaces it, cited to NIST, NSA and IETF.">
+<link rel="canonical" href="https://pqcstd.evoaiglobal.ai/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f2a4f">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="evoAI">
+<meta property="og:url" content="https://pqcstd.evoaiglobal.ai/">
+<meta property="og:title" content="Post-Quantum Cryptography (PQC) Standards Manager | evoAI">
+<meta property="og:description" content="Reference service for post-quantum readiness: one API says if an algorithm is allowed today, when it must go and what replaces it, cited to NIST, NSA and IETF.">
+<meta property="og:image" content="https://pqcstd.evoaiglobal.ai/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PQC Standards Manager: post-quantum standards, reviewed and versioned">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@evoaiglobal">
+<meta name="twitter:creator" content="@evoaiglobal">
+<meta name="twitter:title" content="Post-Quantum Cryptography (PQC) Standards Manager | evoAI">
+<meta name="twitter:description" content="Reference service for post-quantum readiness: one API says if an algorithm is allowed today, when it must go and what replaces it, cited to NIST, NSA and IETF.">
+<meta name="twitter:image" content="https://pqcstd.evoaiglobal.ai/assets/og-image.png">
+<script type="application/ld+json">
+[
+ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.evoaiglobal.ai/#organization",
+  "name": "evoAI",
+  "url": "https://www.evoaiglobal.ai/",
+  "logo": "https://evoaiglobal.ai/images/logo.png",
+  "sameAs": [
+   "https://x.com/evoaiglobal"
+  ]
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "PQC Standards Manager",
+  "alternateName": "evoAI PQC Secure",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web",
+  "url": "https://pqcstd.evoaiglobal.ai/",
+  "description": "Reference service for post-quantum readiness: one API says if an algorithm is allowed today, when it must go and what replaces it, cited to NIST, NSA and IETF.",
+  "image": "https://pqcstd.evoaiglobal.ai/assets/og-image.png",
+  "publisher": {
+   "@id": "https://www.evoaiglobal.ai/#organization"
+  },
+  "featureList": [
+   "Versioned, reviewed PQC standards catalogue",
+   "Algorithm verdicts with transition dates",
+   "Replacement suggestions",
+   "Batch readiness assessment via REST API",
+   "Cited NIST, NSA CNSA 2.0 and IETF sources"
+  ]
+ }
+]
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#ffffff}
+a{color:#1f4f8f}a:hover{color:#0f2a4f}
+.lp-h{font-family:"Space Grotesk",Inter,system-ui,sans-serif;letter-spacing:-0.01em}
+@media (max-width:760px){.lp-hero-title{font-size:38px !important}.lp-sec-title{font-size:30px !important}.lp-pad{padding-left:20px !important;padding-right:20px !important}}
+</style>
+</head>
+<body>
+<div style="font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; color: #1c2430; background: #ffffff; min-width: 0">
+
+<!-- navigation -->
+<header style="border-bottom: 1px solid #e3e7ec; background: #ffffff">
+<nav class="lp-pad" aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a href="#top" style="display: flex; align-items: center"><img width="437" height="152" src="/assets/pqc-secure-logo.png" alt="evoAI PQC Secure" style="height: 44px; width: auto; display: block"></a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 15px; font-weight: 500">
+<a href="#how" style="color: #3b4552; text-decoration: none">How it works</a>
+<a href="#features" style="color: #3b4552; text-decoration: none">Features</a>
+<a href="#demo" style="color: #3b4552; text-decoration: none">Product tour</a>
+<a href="#developers" style="color: #3b4552; text-decoration: none">Developers</a>
+<a href="#coverage" style="color: #3b4552; text-decoration: none">Coverage</a>
+<a href="/ui/" style="color: #1f4f8f; text-decoration: none; font-weight: 600">Sign in</a>
+<a href="https://evoaiglobal.ai/#contact" style="color: #ffffff; background: #1f4f8f; padding: 11px 18px; border-radius: 8px; text-decoration: none; font-weight: 600">Contact us</a>
+</div>
+</nav>
+</header>
+<main>
+
+<!-- hero -->
+<section id="top" style="background: linear-gradient(160deg, #0f2a4f 0%, #1a467f 55%, #2558a3 100%); color: #ffffff">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 80px 40px 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 480px; min-width: 0">
+<p style="margin: 0 0 18px; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #cfe0f5; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); padding: 6px 12px; border-radius: 999px">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: #6fd08a"></span>Early access · evoAI PQC Secure</p>
+<h1 class="lp-h lp-hero-title" style="margin: 0 0 20px; font-size: 54px; line-height: 1.06; font-weight: 700">Post-quantum standards, reviewed and versioned.</h1>
+<p style="margin: 0 0 30px; font-size: 19px; line-height: 1.55; color: #dbe4f1; max-width: 560px">The reference service behind your post-quantum readiness assessments. One API tells you whether an algorithm is allowed today, when it has to go, and what replaces it, with every answer cited to NIST, NSA and IETF sources.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px">
+<a href="https://evoaiglobal.ai/#contact" style="background: #ffffff; color: #0f2a4f; font-weight: 700; padding: 14px 24px; border-radius: 9px; text-decoration: none; font-size: 16px">Contact us</a>
+<a href="#how" style="color: #ffffff; font-weight: 600; padding: 13px 22px; border-radius: 9px; text-decoration: none; font-size: 16px; border: 1px solid rgba(255,255,255,0.5)">See how it works</a>
+</div>
+<p style="margin: 0; font-size: 14px; color: #b9cbe3; line-height: 1.5">US standards today: NIST FIPS 203–207, IR 8547, SP 800-131A, NSA CNSA 2.0 and IETF RFCs. EU, UK and more on the roadmap.</p>
+</div>
+<div style="flex: 1 1 480px; min-width: 0">
+<figure style="margin: 0; background: #ffffff; border-radius: 14px; padding: 10px; box-shadow: 0 24px 60px rgba(5, 18, 40, 0.45)">
+<div style="display: flex; gap: 6px; padding: 2px 4px 10px" aria-hidden="true"><span style="width: 10px; height: 10px; border-radius: 50%; background: #e3e7ec"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #e3e7ec"></span><span style="width: 10px; height: 10px; border-radius: 50%; background: #e3e7ec"></span></div>
+<img width="1016" height="438" loading="lazy" decoding="async" src="/assets/readiness-summary.png" alt="Readiness summary: 29% ready, 19 of 28 systems must move to quantum-safe cryptography, 1,502 days to the first deadline, and the next three moves" style="width: 100%; height: auto; display: block; border-radius: 8px">
+<figcaption style="font-size: 12px; color: #5d6877; padding: 10px 4px 2px">Readiness check of a sample inventory (fictional company).</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- why now -->
+<section style="background: #f6f8fb; border-bottom: 1px solid #e3e7ec">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 56px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 12px; padding: 22px">
+<p class="lp-h" style="margin: 0 0 6px; font-size: 34px; font-weight: 700; color: #0f2a4f">2030</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3b4552">First NSA CNSA 2.0 deadlines for national security systems, starting with networking equipment.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 12px; padding: 22px">
+<p class="lp-h" style="margin: 0 0 6px; font-size: 34px; font-weight: 700; color: #9a5b00">2031</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3b4552">NIST IR 8547 deprecates RSA and elliptic-curve cryptography for key establishment and signatures.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 12px; padding: 22px">
+<p class="lp-h" style="margin: 0 0 6px; font-size: 34px; font-weight: 700; color: #b42318">2036</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3b4552">The same algorithms become disallowed. Long migrations have to start well before then.</p>
+</div>
+<div style="background: #0f2a4f; border-radius: 12px; padding: 22px; color: #ffffff">
+<p class="lp-h" style="margin: 0 0 6px; font-size: 22px; font-weight: 700; line-height: 1.2">Harvest now, decrypt later</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #dbe4f1">Sensitive data recorded today can be decrypted once quantum computers arrive. For long-lived data, the risk starts now.</p>
+</div>
+</div>
+</section>
+
+<!-- how it works -->
+<section id="how">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #2e6ac0">How it works</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 14px; font-size: 40px; line-height: 1.12; color: #0f2a4f; max-width: 760px">One trusted source of PQC rules, kept current for you.</h2>
+<p style="margin: 0 0 44px; font-size: 18px; line-height: 1.55; color: #5d6877; max-width: 720px">Standards change. New documents appear, drafts become final, deadlines move. The Standards Manager tracks them so your assessments don't silently go out of date.</p>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<li style="border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<span class="lp-h" style="display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #e8f0fb; color: #1f4f8f; font-weight: 700; font-size: 18px; margin-bottom: 16px">1</span>
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Discover</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Sources such as NIST and the NSA are checked for new and updated publications. Changes are fetched, archived and compared with what you have.</p>
+</li>
+<li style="border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<span class="lp-h" style="display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #e8f0fb; color: #1f4f8f; font-weight: 700; font-size: 18px; margin-bottom: 16px">2</span>
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Review</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Nothing changes without review. Each proposed rule is checked against its source passage and approved by a person, with a recorded reason.</p>
+</li>
+<li style="border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<span class="lp-h" style="display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #e8f0fb; color: #1f4f8f; font-weight: 700; font-size: 18px; margin-bottom: 16px">3</span>
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Release</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Approved changes go into a numbered release with public release notes. Any past assessment can be re-run against the release it used.</p>
+</li>
+<li style="border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<span class="lp-h" style="display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #e8f0fb; color: #1f4f8f; font-weight: 700; font-size: 18px; margin-bottom: 16px">4</span>
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Assess</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Your tools call the API, one crypto use or thousands at once, and get verdicts, deadlines, replacements and the cited rules back.</p>
+</li>
+</ol>
+</div>
+</section>
+
+<!-- features -->
+<section id="features" style="background: #f6f8fb; border-top: 1px solid #e3e7ec; border-bottom: 1px solid #e3e7ec">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #2e6ac0">What you get</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 44px; font-size: 40px; line-height: 1.12; color: #0f2a4f; max-width: 760px">Answers your assessment can stand behind.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">Verdicts with dates</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Approved, deprecated or disallowed today, plus the date each status changes and the next transition deadline for your kind of system.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">What to move to</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Approved replacements for each use: ML-KEM for key exchange, ML-DSA or SLH-DSA for signatures, stronger sizes where that is enough.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"></path></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">Right for the system</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Ordinary business systems, US national security systems, federal high-value assets or FIPS-only environments: each gets the rules and deadlines that apply to it.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">Your standards, your scope</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Assess against all approved standards, or only the ones your regulator or policy names. Set the list once for a whole batch.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6M8 13h8M8 17h5"></path></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">Evidence for auditors</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Every verdict lists the rules behind it, with the standard, section and date, linked to the official publication.</p>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 26px">
+<svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f4f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+<h3 class="lp-h" style="margin: 14px 0 8px; font-size: 19px; color: #0f2a4f">Continuously checked</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">The service is scanned for known vulnerabilities weekly and on every change, and its full test suite runs on a freshly built database each time.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- demo -->
+<section id="demo">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 380px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #2e6ac0">See it in action</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 16px; font-size: 40px; line-height: 1.12; color: #0f2a4f">From a crypto inventory to a migration plan in minutes.</h2>
+<p style="margin: 0 0 22px; font-size: 18px; line-height: 1.55; color: #5d6877">Start from a list of where your organisation uses cryptography and get a readiness picture anyone can read, from the board to the engineers who make the changes.</p>
+<ul style="margin: 0 0 30px; padding: 0; list-style: none; display: grid; gap: 12px; font-size: 16px; line-height: 1.45">
+<li style="display: flex; gap: 12px"><svg aria-hidden="true" style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a7f4b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>A readiness score, the days left to the first deadline and your next three moves</span></li>
+<li style="display: flex; gap: 12px"><svg aria-hidden="true" style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a7f4b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>A roadmap per system: fine today, must be replaced, banned</span></li>
+<li style="display: flex; gap: 12px"><svg aria-hidden="true" style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a7f4b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>Who needs to act, quick wins and the vendor-dependent big jobs</span></li>
+<li style="display: flex; gap: 12px"><svg aria-hidden="true" style="flex: none; margin-top: 2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a7f4b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"></path></svg><span>A ready-to-share PDF report with executive summary, action plan and evidence</span></li>
+</ul>
+<a href="https://evoaiglobal.ai/#contact" style="display: inline-block; background: #1f4f8f; color: #ffffff; font-weight: 700; padding: 14px 24px; border-radius: 9px; text-decoration: none; font-size: 16px">Contact us for a walkthrough</a>
+</div>
+<div style="flex: 1.2 1 480px; min-width: 0; display: grid; gap: 18px">
+<img width="993" height="520" loading="lazy" decoding="async" src="/assets/migration-roadmap.png" alt="Migration roadmap: one row per system on a shared timeline, coloured fine, must be replaced and banned, with when it is due and what to move to" style="width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid #e3e7ec; box-shadow: 0 12px 32px rgba(15, 42, 79, 0.12)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px; background: #f6f8fb; border: 1px solid #e3e7ec; border-radius: 12px; padding: 16px">
+<img width="909" height="797" loading="lazy" decoding="async" src="/assets/sample-report.png" alt="First page of a sample PQC readiness report" style="width: 150px; height: auto; display: block; border-radius: 6px; border: 1px solid #d5dbe3; box-shadow: 0 6px 16px rgba(15, 42, 79, 0.12)">
+<div style="flex: 1 1 200px; min-width: 0">
+<p class="lp-h" style="margin: 0 0 6px; font-size: 18px; font-weight: 700; color: #0f2a4f">Readiness report, ready to share</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3b4552">Executive summary and recommendations, ownership by team, a prioritised action plan, and the evidence behind every verdict.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- developers -->
+<section id="developers" style="background: #0f2a4f; color: #ffffff">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 380px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9cc0ef">For developers</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 16px; font-size: 40px; line-height: 1.12">One API for your assessment tool.</h2>
+<p style="margin: 0 0 22px; font-size: 18px; line-height: 1.55; color: #dbe4f1">Send scanner output as it is: names such as ECDHE, secp256r1 or Kyber are recognised. Assess one use or a whole inventory per call, or download a signed snapshot of the reference data to work offline.</p>
+<ul style="margin: 0 0 30px; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; color: #dbe4f1">
+<li>· Read-only API keys per client, with usage per key and organisation</li>
+<li>· Reproducible: pin any call to the release it was assessed against</li>
+<li>· Client API guide and a ready-made Postman collection</li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="/ui/api-guide.html" style="background: #ffffff; color: #0f2a4f; font-weight: 700; padding: 13px 22px; border-radius: 9px; text-decoration: none; font-size: 15px">Read the API guide</a>
+<a href="/ui/release-notes.html" style="color: #ffffff; font-weight: 600; padding: 12px 20px; border-radius: 9px; text-decoration: none; font-size: 15px; border: 1px solid rgba(255,255,255,0.45)">Release notes</a>
+</div>
+<p style="margin: 18px 0 0; font-size: 14.5px; color: #c9d6ea">Already a customer? <a href="/ui/" style="color: #ffffff; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Sign in to manage your API keys →</a></p>
+</div>
+<div style="flex: 1.2 1 480px; min-width: 0">
+<pre aria-label="Example API request and response" style="margin: 0; background: #071a33; border: 1px solid #23426f; border-radius: 14px; padding: 22px 24px; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6; color: #dce6f5; white-space: pre"><span style="color: #8fb3e6">POST</span> /v1/query/evaluate/batch
+X-API-Key: pqcsm_••••••••
+
+<span style="color: #8a9bb5">{ "standards": ["NIST IR 8547", "FIPS 186-5"],
+  "items": [ { "reference": "CRY-001",
+               "algorithm_name": "RSA", "parameter_set": "2048",
+               "crypto_purpose": "Key establishment" } ] }</span>
+
+<span style="color: #8fb3e6">200 OK</span>
+"status": <span style="color: #9be3a6">"Approved"</span>,
+"deprecated_from": <span style="color: #ffd38a">"2031-01-01"</span>,
+"disallowed_from": <span style="color: #ff9b94">"2036-01-01"</span>,
+"recommended_replacements": [
+  { "algorithm": <span style="color: #9be3a6">"ML-KEM"</span>,
+    "preferred_parameter_sets": ["ML-KEM-768"] } ],
+"rules": [ { "standard_code": "NIST IR 8547",
+             "rule_type": "Deprecated", … } ],
+"release": 21</pre>
+</div>
+</div>
+</section>
+
+<!-- who it is for -->
+<section>
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #2e6ac0">Built for</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 40px; font-size: 40px; line-height: 1.12; color: #0f2a4f">Teams that have to get post-quantum migration right.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<div style="border-top: 4px solid #1f4f8f; background: #f6f8fb; border-radius: 0 0 14px 14px; padding: 24px">
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Assessment tool vendors</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Plug a maintained, cited rule set into your scanner or CBOM tool instead of hard-coding dates that will change.</p>
+</div>
+<div style="border-top: 4px solid #2e6ac0; background: #f6f8fb; border-radius: 0 0 14px 14px; padding: 24px">
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Consultancies and auditors</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Produce consistent, evidence-backed readiness reports for every client, reproducible against the release you assessed with.</p>
+</div>
+<div style="border-top: 4px solid #1a7f4b; background: #f6f8fb; border-radius: 0 0 14px 14px; padding: 24px">
+<h3 class="lp-h" style="margin: 0 0 8px; font-size: 20px; color: #0f2a4f">Security and risk teams</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3b4552">Know what to fix first, who owns it and by when, and show your board a plan rather than a spreadsheet of algorithms.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- coverage -->
+<section id="coverage" style="background: #f6f8fb; border-top: 1px solid #e3e7ec; border-bottom: 1px solid #e3e7ec">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 72px 40px; display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1 1 320px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #2e6ac0">Coverage</p>
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 14px; font-size: 34px; line-height: 1.15; color: #0f2a4f">Clear about what's covered today.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #5d6877">The current scope is listed openly in the public release notes, so you always know what an answer is based on.</p>
+</div>
+<div style="flex: 1.4 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 22px">
+<p style="margin: 0 0 12px; display: inline-block; font-size: 12px; font-weight: 700; color: #1a7f4b; background: #e3f4ea; padding: 3px 10px; border-radius: 999px">Supported today</p>
+<p class="lp-h" style="margin: 0 0 10px; font-size: 19px; font-weight: 700; color: #0f2a4f">United States</p>
+<ul style="margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.7; color: #3b4552">
+<li>General systems (NIST)</li>
+<li>National security systems (NSA CNSA 2.0)</li>
+<li>Federal high-value assets</li>
+<li>IETF protocols and algorithms</li>
+</ul>
+</div>
+<div style="background: #ffffff; border: 1px solid #e3e7ec; border-radius: 14px; padding: 22px">
+<p style="margin: 0 0 12px; display: inline-block; font-size: 12px; font-weight: 700; color: #1f4f8f; background: #e8f0fb; padding: 3px 10px; border-radius: 999px">On the roadmap</p>
+<p class="lp-h" style="margin: 0 0 10px; font-size: 19px; font-weight: 700; color: #0f2a4f">Europe and beyond</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #3b4552">European Union, Germany, France, United Kingdom, Canada, Australia, India, Japan, South Korea and China.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- final call to action -->
+<section id="contact">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 88px 40px">
+<div style="background: linear-gradient(140deg, #0f2a4f 0%, #1f4f8f 70%, #2e6ac0 100%); border-radius: 20px; padding: 56px 48px; color: #ffffff; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 class="lp-h lp-sec-title" style="margin: 0 0 12px; font-size: 38px; line-height: 1.12">Join early access.</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #dbe4f1; max-width: 560px">We're onboarding a small group of assessment teams. Tell us about your systems and we'll walk you through what a readiness check looks like for you.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="https://evoaiglobal.ai/#contact" style="background: #ffffff; color: #0f2a4f; font-weight: 700; padding: 15px 28px; border-radius: 9px; text-decoration: none; font-size: 17px">Contact us</a>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<!-- footer -->
+<footer style="border-top: 1px solid #e3e7ec">
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 32px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: #5d6877">
+<div style="display: flex; align-items: center; gap: 14px">
+<a href="https://evoaiglobal.ai" aria-label="evoAI home" style="display: block; line-height: 0">
+<img src="https://evoaiglobal.ai/images/logo.png" alt="evoAI" style="height: 32px; width: auto; display: block">
+</a>
+<span>A product of <a href="https://evoaiglobal.ai" style="color: #3b4552; font-weight: 600; text-decoration: none">evoAI</a> · Evolve. Automate. Accelerate.</span>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 8px 22px">
+<a href="https://evoaiglobal.ai/#contact" style="color: #3b4552; text-decoration: none">Contact us</a>
+<a href="/ui/api-guide.html" style="color: #3b4552; text-decoration: none">API guide</a>
+<a href="/ui/release-notes.html" style="color: #3b4552; text-decoration: none">Release notes</a>
+<a href="/ui/" style="color: #3b4552; text-decoration: none">Sign in</a>
+<a href="https://evoaiglobal.ai" style="color: #3b4552; text-decoration: none">evoaiglobal.ai</a>
+<a href="https://evoaiglobal.ai/privacy-policy.html" style="color: #3b4552; text-decoration: none">Privacy Policy</a>
+<a href="https://evoaiglobal.ai/terms.html" style="color: #3b4552; text-decoration: none">Terms &amp; Conditions</a>
+</nav>
+<span>© 2026 evoAI</span>
+</div>
+<div class="lp-pad" style="max-width: 1200px; margin: 0 auto; padding: 0 40px 28px">
+<p style="margin: 0; padding-top: 16px; border-top: 1px solid #eef1f4; font-size: 12.5px; line-height: 1.6; color: #6b7583">PQC Standards Manager provides reference information and readiness guidance only. It is not legal, compliance or security advice, and results should be reviewed by qualified staff before acting on them. Standards and algorithm names (e.g. FIPS 203, ML-KEM) belong to their publishers, such as NIST; evoAI is not affiliated with or endorsed by them.</p>
+</div>
+</footer>
+
+</div>
+</body>
+</html>

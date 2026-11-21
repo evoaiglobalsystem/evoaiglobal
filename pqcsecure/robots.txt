@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /ui/
+Disallow: /v1/
+Disallow: /auth/
+Allow: /ui/api-guide.html
+Allow: /ui/release-notes.html
+
+Sitemap: https://pqcstd.evoaiglobal.ai/sitemap.xml
